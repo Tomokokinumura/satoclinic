@@ -535,6 +535,12 @@ main {
   text-align: center;
 }
 
+.service-title-floating.centered {
+  left: 50%;
+  top: 105px;
+  width: 242px;
+  transform: translateX(-50%);
+}
 .services-standalone-title {
   display: flex;
   align-items: center;
