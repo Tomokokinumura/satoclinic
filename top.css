@@ -111,10 +111,13 @@ body {
 
 /* header */
 header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 10;
-  background: rgba(217, 217, 217, .5);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0);
+  transition: background .2s ease, box-shadow .2s ease;
 }
 
 .header-inner {
@@ -144,6 +147,15 @@ nav a {
   color: #000;
   font-size: 18px;
   font-weight: 700;
+}
+
+header.scrolled {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+main {
+  padding-top: 90px;
 }
 
 
