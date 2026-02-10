@@ -481,10 +481,10 @@ nav a {
 
 .services-grid {
   display: flex;
-  flex-wrap: wrap;
-  gap: 79px;
-  align-content: flex-end;
-  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 0;
+  align-content: flex-start;
+  justify-content: space-between;
   padding-top: 0;
 }
 
