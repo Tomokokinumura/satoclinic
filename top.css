@@ -45,6 +45,7 @@ body {
   font-size: 40px;
   font-weight: 700;
   letter-spacing: 2px;
+  color: #146D3C;
 }
 
 .card {
@@ -848,6 +849,7 @@ footer {
   margin: 0 auto;
   position: relative;
   min-height: 500px;
+  background: #F0F0DB;
 }
 
 .footer-logo {
