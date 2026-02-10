@@ -931,11 +931,12 @@ footer {
 
 .footer-schedule {
   position: absolute;
-  right: 120px;
+  left: 575px;
   top: 40px;
-  width: 520px;
+  width: 753px;
+  height: 225px;
   max-width: 100%;
-  height: auto;
+  height: 225px;
   display: block;
 }
 
