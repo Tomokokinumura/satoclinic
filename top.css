@@ -147,7 +147,7 @@ nav ul {
 
 nav a {
   text-decoration: none;
-  color: #000;
+  color: #1B2634;
   font-size: 18px;
   font-weight: 700;
 }
@@ -418,6 +418,7 @@ main {
   list-style: none;
   display: grid;
   gap: 10px;
+  color: #1B2634;
 }
 
 .news-item {
@@ -428,13 +429,14 @@ main {
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 2.7px;
+  color: #1B2634;
 }
 
 .news-item .go {
   width: 16px;
   height: 16px;
   border-radius: 8px;
-  background: #8E8E93;
+  background: #146D3C;
   color: #fff;
   display: grid;
   place-items: center;
