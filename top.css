@@ -278,36 +278,43 @@ main {
   width: 1089px;
   margin: 0 auto;
   position: relative;
+  display: grid;
+  gap: 18px;
 }
 
 .schedule-tel {
-  position: absolute;
-  right: 0;
-  top: 30px;
-  text-align: center;
+  text-align: right;
+  font-size: 18px;
 }
 
 .schedule-note {
-  position: absolute;
-  right: 0;
-  top: 95px;
   text-align: right;
-  font-size: 16px;
-  letter-spacing: 2.4px;
-  line-height: 25px;
+  font-size: 14px;
+  letter-spacing: 1.6px;
+  line-height: 22px;
   white-space: pre-line;
 }
 
 .week-grid {
   margin-top: 0;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 10px;
+  grid-template-columns: 160px repeat(7, 1fr);
+  grid-auto-rows: 72px;
+  gap: 0;
   align-items: center;
-  padding: 20px 0;
-  border: 2px solid var(--line);
-  border-radius: 6px;
+  padding: 18px 30px;
+  border: 1px solid #cfd6df;
+  border-radius: 12px;
   background: #fff;
+}
+
+.week-grid > * {
+  border-top: 1px solid #cfd6df;
+  min-height: 72px;
+}
+
+.week-grid > :nth-child(-n+8) {
+  border-top: 0;
 }
 
 .day-chip {
@@ -318,31 +325,61 @@ main {
 .day-chip .circle {
   width: 40px;
   height: 40px;
-  border-radius: 18.5px;
-  background: #ccc;
+  border-radius: 20px;
+  background: #eef1dc;
   display: grid;
   place-items: center;
   font-weight: 600;
 }
 
 .cell-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  font-size: 22.97px;
-  font-weight: 500;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f2a37;
 }
 
 .time-col {
+  opacity: .9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   font-weight: 700;
-  font-size: 19.14px;
+  font-size: 16px;
+  color: #1f2a37;
 }
 
 .time-col .time {
   opacity: .9;
-  letter-spacing: 3.83px;
+  letter-spacing: 1.8px;
   font-weight: 700;
   display: block;
   margin-top: 2px;
+}
+
+.schedule .section-title {
+  color: #0b6a3a;
+}
+
+.week-grid> :nth-child(8) .circle {
+  background: #f7e3e0;
+}
+
+.schedule-info {
+  width: 100%;
+  display: grid;
+  justify-items: end;
+  gap: 6px;
+  color: #0b6a3a;
+}
+
+.schedule-info .muted-tel {
+  color: #0b6a3a;
 }
 
 /* news */
@@ -542,6 +579,7 @@ main {
   width: 242px;
   transform: translateX(-50%);
 }
+
 .services-standalone-title {
   display: flex;
   align-items: center;
@@ -627,6 +665,7 @@ main {
 .staff {
   padding-top: 20px;
   padding-bottom: 40px;
+  background: #fff;
 }
 
 .staff-wrap {
@@ -638,61 +677,74 @@ main {
 .staff-lead {
   width: 937px;
   margin: 0 auto 30px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
-  letter-spacing: 2.7px;
-  line-height: 25px;
+  letter-spacing: 1.6px;
+  line-height: 28px;
+  text-align: center;
 }
 
 .staff-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 28px 40px;
-  margin-top: 20px;
+  gap: 24px 28px;
+  margin-top: 24px;
 }
 
 .staff-card {
   height: 400px;
-  background: var(--gray-400);
-  border-radius: 10px;
+  background: #f5f1df;
+  border-radius: 14px;
   display: flex;
-  gap: 15px;
-  padding: 20px 19px;
+  gap: 18px;
+  padding: 18px;
   position: relative;
   align-items: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
 
 .staff-photo {
-  width: 250px;
-  height: 350px;
-  background: var(--gray-200);
-  border-radius: 10px;
+  width: 240px;
+  height: 340px;
+  background: #e6e2d2;
+  border-radius: 12px;
   flex: 0 0 auto;
+  object-fit: cover;
 }
 
 .staff-body {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   min-width: 0;
 }
 
 .staff-name {
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 2.4px;
-  line-height: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  line-height: 22px;
 }
 
 .staff-text {
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 1.4px;
-  line-height: 18px;
-  text-align: justify;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  line-height: 20px;
+  text-align: left;
   white-space: pre-line;
   width: 286px;
   max-width: 286px;
+}
+
+.staff .tag {
+  background: #9aa38a;
+  color: #fff;
+  border-radius: 12px;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  line-height: 22px;
+  padding: 2px 12px;
 }
 
 .staff-label {
