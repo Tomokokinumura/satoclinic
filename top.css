@@ -576,6 +576,8 @@ nav a {
   width: 360px;
   height: 286px;
   background: var(--gray-400);
+  object-fit: cover;
+  display: block;
 }
 
 .about-frame {
