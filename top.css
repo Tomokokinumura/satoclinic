@@ -929,6 +929,16 @@ footer {
   white-space: pre-line;
 }
 
+.footer-schedule {
+  position: absolute;
+  right: 120px;
+  top: 40px;
+  width: 520px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .footer-hours {
   position: absolute;
   left: 575px;
