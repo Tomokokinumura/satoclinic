@@ -556,6 +556,7 @@ main {
   flex-direction: column;
   gap: 30px;
   position: relative;
+  color: #1B2634;
 }
 
 .service-thumb {
@@ -627,6 +628,7 @@ main {
   letter-spacing: 2.7px;
   line-height: 30px;
   text-align: justify;
+  color: #1B2634;
 }
 
 .about-gallery {
@@ -694,6 +696,7 @@ main {
   letter-spacing: 1.6px;
   line-height: 28px;
   text-align: center;
+  color: #1B2634;
 }
 
 .staff-grid {
@@ -736,6 +739,7 @@ main {
   font-weight: 700;
   letter-spacing: 1.6px;
   line-height: 22px;
+  color: #1B2634;
 }
 
 .staff-text {
@@ -747,6 +751,7 @@ main {
   white-space: pre-line;
   width: 286px;
   max-width: 286px;
+  color: #1B2634;
 }
 
 .staff .tag {
@@ -807,6 +812,7 @@ main {
   font-size: 24px;
   font-weight: 600;
   letter-spacing: 3.6px;
+  color: #1B2634;
 }
 
 .info-block .label {
@@ -814,6 +820,7 @@ main {
   font-weight: 600;
   letter-spacing: 3px;
   line-height: 26.12px;
+  color: #1B2634;
 }
 
 .dot {
@@ -830,6 +837,7 @@ main {
   letter-spacing: 2.4px;
   line-height: 26.12px;
   white-space: pre-line;
+  color: #1B2634;
 }
 
 .access-note {
@@ -875,6 +883,7 @@ footer {
   font-weight: 500;
   letter-spacing: 2.4px;
   line-height: 30px;
+  color: #1B2634;
 }
 
 .footer-faq {
@@ -888,7 +897,7 @@ footer {
   letter-spacing: 2.1px;
   line-height: 20px;
   text-decoration: none;
-  color: #000;
+  color: #1B2634;
 }
 
 .footer-help {
@@ -909,6 +918,7 @@ footer {
   letter-spacing: 2.7px;
   text-align: center;
   white-space: pre-line;
+  color: #1B2634;
 }
 
 .copyright {
@@ -919,4 +929,5 @@ footer {
   text-align: center;
   font-size: 14px;
   font-weight: 400;
+  color: #1B2634;
 }
