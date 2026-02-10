@@ -839,7 +839,7 @@ main {
 
 /* footer */
 footer {
-  background: var(--gray-400);
+  background: #F0F0DB;
   padding: 40px 0 20px;
   margin-top: 40px;
 }
