@@ -130,8 +130,9 @@ header {
 }
 
 .logo {
-  font-size: 40px;
-  font-weight: 500;
+  height: 226px;
+  width: auto;
+  display: block;
 }
 
 nav ul {
