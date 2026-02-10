@@ -240,7 +240,7 @@ main {
 .hero-tel-box {
   position: absolute;
   right: 120px;
-  top: 104px;
+  top: 4px;
   width: 267px;
   height: 99px;
   padding: 12px 18px;
@@ -254,10 +254,11 @@ main {
 
 .hero-tel-box small {
   display: block;
-  font-size: 12px;
+  font-family: Roboto, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 1.2px;
-  line-height: 16px;
+  line-height: 18px;
   white-space: nowrap;
 }
 
@@ -831,6 +832,20 @@ main {
   margin: 4px 0 6px;
 }
 
+.info-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-block .dot,
+.info-block .label {
+  display: inline-block;
+}
+
+.info-block > .dot + .label {
+  margin-left: 8px;
+}
+
 .info-block .value {
   font-size: 16px;
   font-weight: 500;
@@ -842,13 +857,15 @@ main {
 
 .access-note {
   padding: 10.45px;
-  background: var(--gray-100);
+  background: #F0F0DB;
   border-radius: 10.45px;
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 2.4px;
   line-height: 26.12px;
   white-space: pre-line;
+  display: flex;
+  align-items: center;
 }
 
 /* footer */
