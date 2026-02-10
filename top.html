@@ -1,0 +1,1136 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>佐藤内科医院（ワイヤー）</title>
+
+  <style>
+    :root{
+      --text:#0B3C21;
+      --bg:#fff;
+
+      --gray-100:#F2F2F7;
+      --gray-200:#EDE9E9;
+      --gray-300:#E5E1E1;
+      --gray-400:#D9D9D9;
+      --gray-500:#B7B3B3;
+
+      --btn:#807B7B;
+      --tag:#666464;
+
+      --muted:rgba(0,0,0,.2);
+      --line:rgba(0,0,0,.97);
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family:Roboto, system-ui, -apple-system, "Segoe UI", sans-serif;
+      background:var(--bg);
+      color:#000;
+    }
+
+    /* fixed canvas (wireframe) */
+    .page{
+      width:1440px;
+      margin:0 auto;
+      outline:1px solid var(--text);
+      background:#fff;
+      overflow:hidden;
+    }
+
+    /* common */
+    .section-title{
+      height:135px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:"Zen Old Mincho", serif;
+      font-size:40px;
+      font-weight:700;
+      letter-spacing:2px;
+    }
+
+    .card{
+      background:var(--gray-300);
+      border-radius:10px;
+    }
+
+    .pill-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:5px 15px;
+      border-radius:30px;
+      background:var(--btn);
+      color:#fff;
+      font-weight:500;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    .pill-btn .arrow{
+      width:16px; height:16px;
+      border-radius:8px;
+      display:grid;
+      place-items:center;
+      background:#fff;
+      color:var(--btn);
+      font-size:10px;
+      font-weight:700;
+      line-height:1;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:1px 15px;
+      border-radius:10px;
+      background:var(--tag);
+      color:#fff;
+      font-size:13px;
+      font-weight:600;
+      letter-spacing:1.95px;
+      line-height:25px;
+      white-space:nowrap;
+    }
+
+    .muted-tel{
+      color:var(--muted);
+      font-family:"Zen Old Mincho", serif;
+      font-weight:400;
+      white-space:nowrap;
+    }
+    .muted-tel span{ font-size:19.51px; }
+    .muted-tel b{ font-size:29.27px; font-weight:400; }
+
+    /* header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:rgba(217,217,217,.5);
+    }
+    .header-inner{
+      height:90px;
+      padding:22px 100px;
+      display:flex;
+      align-items:center;
+      gap:118px;
+    }
+    .logo{
+      font-size:40px;
+      font-weight:500;
+    }
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:45px;
+      margin:0;
+      padding:0;
+    }
+    nav a{
+      text-decoration:none;
+      color:#000;
+      font-size:18px;
+      font-weight:700;
+    }
+
+    /* hero */
+    .hero{
+      position:relative;
+      height:728px;
+      background:var(--gray-500);
+      border:1px solid #161515;
+    }
+    .hero-copy{
+      position:absolute;
+      left:156px;
+      top:356px;
+      width:480px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:17px;
+    }
+    .hero-copy h1{
+      margin:0;
+      text-align:center;
+      font-family:"Zen Old Mincho", serif;
+      font-size:48px;
+      font-weight:900;
+      letter-spacing:4.8px;
+    }
+    .hero-copy p{
+      margin:0;
+      width:566px;
+      text-align:center;
+      font-size:24px;
+      font-weight:500;
+      letter-spacing:3.6px;
+      line-height:28px;
+    }
+    .hero-image-label{
+      position:absolute;
+      left:919px;
+      top:390px;
+      font-size:24px;
+      font-weight:500;
+      letter-spacing:3.6px;
+    }
+    .hero-tel-box{
+      position:absolute;
+      right:120px;
+      top:106px;
+      width:267px;
+      padding:26px 60px;
+      border-radius:10px;
+      background:#fff;
+      display:grid;
+      gap:8px;
+      text-align:center;
+    }
+    .hero-tel-box small{
+      display:block;
+      font-size:14px;
+      font-weight:500;
+      letter-spacing:2.1px;
+      line-height:20px;
+    }
+    .hero-tel-box .tel{
+      color:var(--muted);
+      font-family:"Zen Old Mincho", serif;
+      font-weight:600;
+    }
+    .hero-tel-box .tel b{ font-size:24px; font-weight:600; }
+    .hero-tel-box .tel span{ font-size:16px; }
+
+    /* schedule */
+    .schedule{
+      background:#fff;
+      padding-bottom:60px;
+    }
+    .schedule-wrap{
+      width:1089px;
+      margin:0 auto;
+      position:relative;
+    }
+    .schedule-tel{
+      position:absolute;
+      right:0;
+      top:30px;
+      text-align:center;
+    }
+    .schedule-note{
+      position:absolute;
+      right:0;
+      top:95px;
+      text-align:right;
+      font-size:16px;
+      letter-spacing:2.4px;
+      line-height:25px;
+      white-space:pre-line;
+    }
+    .week-grid{
+      margin-top:0;
+      display:grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap:10px;
+      align-items:center;
+      padding:20px 0;
+      border:2px solid var(--line);
+      border-radius:6px;
+      background:#fff;
+    }
+    .day-chip{ display:grid; place-items:center; }
+    .day-chip .circle{
+      width:40px; height:40px;
+      border-radius:18.5px;
+      background:#ccc;
+      display:grid;
+      place-items:center;
+      font-weight:600;
+    }
+    .cell-center{ text-align:center; font-size:22.97px; font-weight:500; }
+    .time-col{
+      text-align:center;
+      font-weight:700;
+      font-size:19.14px;
+    }
+    .time-col .time{
+      opacity:.9;
+      letter-spacing:3.83px;
+      font-weight:700;
+      display:block;
+      margin-top:2px;
+    }
+
+    /* news */
+    .news{
+      padding-top:20px;
+      padding-bottom:20px;
+    }
+    .news-wrap{
+      width:1201px;
+      margin:0 auto;
+      position:relative;
+    }
+    .news-card{
+      width:1198px;
+      margin:0 auto;
+      height:333px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:var(--gray-300);
+      border-radius:10px;
+    }
+    .news-list{
+      width:694px;
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .news-item{
+      display:flex;
+      align-items:center;
+      gap:7px;
+      padding:10px 0;
+      font-size:18px;
+      font-weight:500;
+      letter-spacing:2.7px;
+    }
+    .news-item .go{
+      width:16px; height:16px;
+      border-radius:8px;
+      background:#8E8E93;
+      color:#fff;
+      display:grid;
+      place-items:center;
+      font-size:8px;
+      font-weight:700;
+      line-height:1;
+    }
+    .news-more{
+      width:1201px;
+      margin:18px auto 0;
+      display:flex;
+      justify-content:flex-end;
+    }
+
+    /* director */
+    .director{
+      padding-top:20px;
+      padding-bottom:20px;
+    }
+    .director-wrap{
+      width:1201px;
+      margin:0 auto;
+    }
+    .director-card{
+      height:568px;
+      position:relative;
+      background:var(--gray-300);
+      border-radius:10px;
+      overflow:hidden;
+    }
+    .director-text{
+      position:absolute;
+      left:50px;
+      top:46px;
+      width:399px;
+      font-size:14px;
+      font-weight:500;
+      letter-spacing:2.1px;
+      line-height:20px;
+      text-align:justify;
+      white-space:pre-line;
+    }
+    .director-sign{
+      position:absolute;
+      left:342px;
+      top:484px;
+      width:109px;
+      font-size:14px;
+      font-weight:500;
+      letter-spacing:2.1px;
+      line-height:20px;
+      text-align:right;
+      white-space:pre-line;
+    }
+    .director-photo{
+      position:absolute;
+      left:480px;
+      top:8px;
+      width:715px;
+      height:560px;
+      outline:1px solid #000;
+    }
+    .director-photo-label{
+      position:absolute;
+      left:717px;
+      top:275px;
+      font-size:24px;
+      font-family:Inter, sans-serif;
+    }
+
+    /* services */
+    .services{
+      padding-top:20px;
+      padding-bottom:40px;
+    }
+    .services-wrap{
+      width:1199px;
+      margin:0 auto;
+      position:relative;
+    }
+    .services-grid{
+      display:flex;
+      flex-wrap:wrap;
+      gap:79px;
+      align-content:flex-end;
+      justify-content:flex-start;
+      padding-top:0;
+    }
+    .service-item{
+      width:242px;
+      display:flex;
+      flex-direction:column;
+      gap:30px;
+      position:relative;
+    }
+    .service-thumb{
+      height:240px;
+      background:var(--gray-400);
+      border-radius:9999px;
+    }
+    .service-desc{
+      font-size:15px;
+      font-weight:500;
+      letter-spacing:1.5px;
+      line-height:25px;
+      text-align:justify;
+      white-space:pre-line;
+    }
+    .service-title-floating{
+      position:absolute;
+      left:17px;
+      top:105px;
+      font-family:"Zen Old Mincho", serif;
+      font-size:26px;
+      font-weight:900;
+      letter-spacing:3.9px;
+      line-height:30px;
+      text-align:center;
+    }
+    .services-standalone-title{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:"Zen Old Mincho", serif;
+      font-size:26px;
+      font-weight:900;
+      letter-spacing:3.9px;
+      line-height:25px;
+      height:240px;
+      width:242px;
+    }
+    .services-more{
+      width:1199px;
+      margin:20px auto 0;
+      display:flex;
+      justify-content:flex-end;
+    }
+
+    /* about */
+    .about{
+      padding-top:20px;
+      padding-bottom:20px;
+      position:relative;
+    }
+    .about-lead{
+      width:937px;
+      margin:0 auto;
+      font-size:18px;
+      font-weight:500;
+      letter-spacing:2.7px;
+      line-height:30px;
+      text-align:justify;
+    }
+    .about-gallery{
+      width:1440px;
+      margin:0 auto;
+      height:286px;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      gap:0;
+      margin-top:129px;
+      position:relative;
+    }
+    .about-img{
+      width:360px;
+      height:286px;
+      background:var(--gray-400);
+    }
+    .about-frame{
+      width:360px;
+      height:286px;
+      outline:1px solid #000;
+      outline-offset:-.5px;
+    }
+    .about-label{
+      position:absolute;
+      bottom:10px;
+      width:360px;
+      text-align:center;
+      font-size:14px;
+      font-weight:400;
+    }
+    .about-more{
+      width:1440px;
+      margin:30px auto 0;
+      display:flex;
+      justify-content:flex-end;
+      padding-right:160px;
+    }
+
+    /* staff */
+    .staff{
+      padding-top:20px;
+      padding-bottom:40px;
+    }
+    .staff-wrap{
+      width:1201px;
+      margin:0 auto;
+      position:relative;
+    }
+    .staff-lead{
+      width:937px;
+      margin:0 auto 30px;
+      font-size:18px;
+      font-weight:500;
+      letter-spacing:2.7px;
+      line-height:25px;
+    }
+    .staff-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:28px 40px;
+      margin-top:20px;
+    }
+    .staff-card{
+      height:400px;
+      background:var(--gray-400);
+      border-radius:10px;
+      display:flex;
+      gap:15px;
+      padding:20px 19px;
+      position:relative;
+      align-items:center;
+    }
+    .staff-photo{
+      width:250px;
+      height:350px;
+      background:var(--gray-200);
+      border-radius:10px;
+      flex:0 0 auto;
+    }
+    .staff-body{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-width:0;
+    }
+    .staff-name{
+      font-size:16px;
+      font-weight:500;
+      letter-spacing:2.4px;
+      line-height:20px;
+    }
+    .staff-text{
+      font-size:14px;
+      font-weight:400;
+      letter-spacing:1.4px;
+      line-height:18px;
+      text-align:justify;
+      white-space:pre-line;
+      width:286px;
+      max-width:286px;
+    }
+    .staff-label{
+      position:absolute;
+      left:56px;
+      top:208px;
+      font-size:15px;
+      font-weight:500;
+      letter-spacing:2.25px;
+      text-align:center;
+      white-space:nowrap;
+    }
+
+    /* access */
+    .access{
+      padding-top:20px;
+      padding-bottom:40px;
+    }
+    .access-wrap{
+      width:1157px;
+      margin:0 auto;
+      position:relative;
+      height:477px;
+    }
+    .map{
+      position:absolute;
+      left:0;
+      top:0;
+      width:624px;
+      height:477px;
+      background:var(--gray-400);
+    }
+    .access-info{
+      position:absolute;
+      left:681px;
+      top:0;
+      width:460px;
+      height:477px;
+      display:flex;
+      flex-direction:column;
+      gap:19.85px;
+    }
+    .access-name{
+      font-size:24px;
+      font-weight:600;
+      letter-spacing:3.6px;
+    }
+    .info-block .label{
+      font-size:20px;
+      font-weight:600;
+      letter-spacing:3px;
+      line-height:26.12px;
+    }
+    .dot{
+      width:8.36px;
+      height:8.36px;
+      background:#000;
+      border-radius:9999px;
+      margin:4px 0 6px;
+    }
+    .info-block .value{
+      font-size:16px;
+      font-weight:500;
+      letter-spacing:2.4px;
+      line-height:26.12px;
+      white-space:pre-line;
+    }
+    .access-note{
+      padding:10.45px;
+      background:var(--gray-100);
+      border-radius:10.45px;
+      font-size:16px;
+      font-weight:500;
+      letter-spacing:2.4px;
+      line-height:26.12px;
+      white-space:pre-line;
+    }
+
+    /* footer */
+    footer{
+      background:var(--gray-400);
+      padding:40px 0 20px;
+      margin-top:40px;
+    }
+    .footer-inner{
+      width:1440px;
+      margin:0 auto;
+      position:relative;
+      min-height:500px;
+    }
+    .footer-logo{
+      margin-left:125px;
+      font-size:40px;
+      font-weight:500;
+      text-align:left;
+    }
+    .footer-links{
+      margin:40px 0 0 170px;
+      width:388px;
+      padding:10px 7px;
+      display:grid;
+      gap:7px;
+      font-size:16px;
+      font-weight:500;
+      letter-spacing:2.4px;
+      line-height:30px;
+    }
+    .footer-faq{
+      margin:30px 0 0 170px;
+      display:inline-flex;
+      padding:7px 15px;
+      border-radius:10px;
+      background:#fff;
+      font-size:14px;
+      font-weight:500;
+      letter-spacing:2.1px;
+      line-height:20px;
+      text-decoration:none;
+      color:#000;
+    }
+    .footer-help{
+      margin:10px 0 0 170px;
+      font-size:14px;
+      font-weight:500;
+      letter-spacing:2.1px;
+      line-height:20px;
+      white-space:pre-line;
+    }
+    .footer-hours{
+      position:absolute;
+      left:575px;
+      top:309px;
+      font-size:18px;
+      font-weight:500;
+      letter-spacing:2.7px;
+      text-align:center;
+      white-space:pre-line;
+    }
+    .copyright{
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:20px;
+      text-align:center;
+      font-size:14px;
+      font-weight:400;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- Header -->
+    <header>
+      <div class="header-inner">
+        <div class="logo">Logo.png</div>
+        <nav aria-label="グローバルナビ">
+          <ul>
+            <li><a href="#services">診療内容</a></li>
+            <li><a href="#schedule">診察時間</a></li>
+            <li><a href="#news">お知らせ</a></li>
+            <li><a href="#about">当院について</a></li>
+            <li><a href="#director">院長挨拶</a></li>
+            <li><a href="#staff">スタッフ紹介</a></li>
+            <li><a href="#access">アクセス</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- Hero -->
+      <section class="hero" aria-label="メインビジュアル">
+        <div class="hero-tel-box" aria-label="電話問い合わせ">
+          <small>お電話でのお問い合わせも<br>受け付けております。</small>
+          <div class="tel"><span>TEL.</span><b>00-0000-0000</b></div>
+        </div>
+
+        <div class="hero-copy">
+          <h1>地域に根差した医療</h1>
+          <p>一人ひとりの声に寄り添い、そばで支えます</p>
+        </div>
+
+        <div class="hero-image-label">診察風景1.jpg</div>
+      </section>
+
+      <!-- Schedule -->
+      <section id="schedule" class="schedule">
+        <div class="section-title">診察時間</div>
+
+        <div class="schedule-wrap">
+          <div class="schedule-tel muted-tel"><span>TEL.</span><b>00-0000-0000</b></div>
+
+          <div class="week-grid" role="table" aria-label="診察時間表（簡易）">
+            <!-- days -->
+            <div class="day-chip"><div class="circle">月</div></div>
+            <div class="day-chip"><div class="circle">火</div></div>
+            <div class="day-chip"><div class="circle">水</div></div>
+            <div class="day-chip"><div class="circle">木</div></div>
+            <div class="day-chip"><div class="circle">金</div></div>
+            <div class="day-chip"><div class="circle">土</div></div>
+            <div class="day-chip"><div class="circle">日</div></div>
+            <div></div>
+
+            <!-- AM -->
+            <div class="cell-center">〇</div>
+            <div class="cell-center">〇</div>
+            <div class="cell-center">〇</div>
+            <div class="cell-center">－</div>
+            <div class="cell-center">〇</div>
+            <div class="cell-center">〇</div>
+            <div class="cell-center">－</div>
+            <div class="time-col">午前<span class="time">9時-12時</span></div>
+
+            <!-- PM -->
+            <div class="cell-center">〇</div>
+            <div class="cell-center">〇</div>
+            <div class="cell-center">－</div>
+            <div class="cell-center">〇</div>
+            <div class="cell-center">－</div>
+            <div class="cell-center">－</div>
+            <div class="cell-center">〇</div>
+            <div class="time-col">午後<span class="time">14時-19時</span></div>
+          </div>
+
+          <div class="schedule-note">
+受付時間：9 時～12 時 / 14～19 時
+休診日：木曜・土曜午後・日曜
+※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。
+          </div>
+        </div>
+      </section>
+
+      <!-- News -->
+      <section id="news" class="news">
+        <div class="section-title">お知らせ</div>
+
+        <div class="news-wrap">
+          <div class="news-card">
+            <ul class="news-list">
+              <li class="news-item">YYMMDD　インフルエンザ予防接種について <span class="go">＞</span></li>
+              <li class="news-item">YYMMDD　年末年始の休診について <span class="go">＞</span></li>
+              <li class="news-item">YYMMDD　健康診断のご案内 <span class="go">＞</span></li>
+              <li class="news-item">YYMMDD　新型コロナウイルス対策について <span class="go">＞</span></li>
+              <li class="news-item">YYMMDD　オンライン診療の導入について <span class="go">＞</span></li>
+            </ul>
+          </div>
+
+          <div class="news-more">
+            <a class="pill-btn" href="#news">お知らせをもっと見る <span class="arrow">＞</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Director -->
+      <section id="director" class="director">
+        <div class="section-title">院長挨拶</div>
+
+        <div class="director-wrap">
+          <div class="director-card">
+            <div class="director-text">
+こんにちは。佐藤内科医院の院長、佐藤太郎と申します。当院のホームページをご覧いただき、ありがとうございます。
+
+佐藤内科医院では、「地域に根ざした医療」をモットーに、患者様一人ひとりに寄り添った医療を提供することを目指しております。日常的な健康管理から生活習慣病の予防、さらには専門的な診断や治療まで、幅広い内科診療を行い、地域の皆様の健康を支える役割を担っていきたいと考えております。
+
+私たちは、患者様の不安を少しでも軽減し、安心して診療を受けていただけるよう、わかりやすい説明と丁寧な対応を心掛けております。また、近隣の医療機関とも連携し、必要に応じて高度医療へのアクセスもサポートいたします。どんな小さな不調でも、どうぞお気軽にご相談ください。
+
+これからも、患者様の健康を第一に考え、地域の皆様に信頼される医療機関であり続けるため、スタッフ一同努力してまいります。どうぞよろしくお願いいたします。
+            </div>
+
+            <div class="director-sign">
+佐藤内科医院
+院長 佐藤太郎
+            </div>
+
+            <div class="director-photo" aria-label="院長写真枠"></div>
+            <div class="director-photo-label">院長：佐藤太郎.jpg</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section id="services" class="services">
+        <div class="section-title">診察内容</div>
+
+        <div class="services-wrap">
+          <div class="services-grid">
+
+            <!-- item 1 -->
+            <article class="service-item" aria-label="一般内科診療">
+              <div class="service-thumb"></div>
+              <div class="service-desc">
+風邪や発熱、喉の痛み、頭痛、腹痛などの症状を中心に、一般的な体調不良の診療を行っています。
+また、原因不明の不調や軽い症状であっても、早期診断に努めております。
+              </div>
+            </article>
+
+            <!-- big title block -->
+            <div class="services-standalone-title">一般内科診療</div>
+
+            <!-- item 2 -->
+            <article class="service-item" aria-label="生活習慣病の診断・治療">
+              <div class="service-thumb"></div>
+              <div class="service-desc" style="letter-spacing:.75px;">
+高血圧症、糖尿病、脂質異常症（高コレステロール血症)、メタボリック症候群など、
+生活習慣病の診断と治療を行います。病気の進行を予防し、健康維持のための生活指導や薬物療法を行います。
+              </div>
+              <div class="service-title-floating" style="left:31px; top:90px; width:180px;">
+                生活習慣病の診断・治療
+              </div>
+            </article>
+
+            <!-- item 3 -->
+            <article class="service-item" aria-label="消化器系の診察">
+              <div class="service-thumb"></div>
+              <div class="service-desc">
+胃痛、胃もたれ、胸やけ、便秘、下痢などの消化器系の不調に対応しています。
+必要に応じて胃カメラや超音波検査などを実施し、胃腸の健康をサポートします。
+              </div>
+              <div class="service-title-floating">消化器系の診察</div>
+            </article>
+
+            <!-- item 4 -->
+            <article class="service-item" aria-label="呼吸器系の診察">
+              <div class="service-thumb"></div>
+              <div class="service-desc">
+風邪や発熱、喉の痛み、頭痛、腹痛などの症状を中心に、一般的な体調不良の診療を行っています。
+また、原因不明の不調や軽い症状であっても、早期診断に努めております。
+              </div>
+              <div class="service-title-floating">呼吸器系の診察</div>
+            </article>
+
+          </div>
+
+          <div class="services-more">
+            <a class="pill-btn" href="#services">診察内容をもっと見る <span class="arrow">＞</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="about">
+        <div class="section-title">当院について</div>
+
+        <p class="about-lead">
+          佐藤医院は、地域の皆様の健康を守り、より良い生活をサポートすることを使命としています。創立以来、私たちは「患者様一人ひとりに寄り添った診療」を大切にし、地域密着型の医療を提供してまいりました。今後も、皆様の健康維持と病気予防に貢献するため、より良い医療サービスを提供し続けることをお約束いたします。
+        </p>
+
+        <div class="about-gallery" aria-label="院内ギャラリー">
+          <!-- 1 -->
+          <div style="position:relative;">
+            <div class="about-img"></div>
+            <div class="about-label" style="left:0;">病院の外観.jpg</div>
+          </div>
+          <div class="about-frame"></div>
+
+          <!-- 2 -->
+          <div style="position:relative;">
+            <div class="about-img"></div>
+            <div class="about-label" style="left:0;">診察風景11.jpg</div>
+          </div>
+          <div class="about-frame"></div>
+
+          <!-- 3 -->
+          <div style="position:relative;">
+            <div class="about-img"></div>
+            <div class="about-label" style="left:0;">病院の内観5.jpg</div>
+          </div>
+          <div class="about-frame"></div>
+
+          <!-- 4 -->
+          <div style="position:relative;">
+            <div class="about-img"></div>
+            <div class="about-label" style="left:0;">受付風景4.jpg</div>
+          </div>
+          <div class="about-frame"></div>
+        </div>
+
+        <div class="about-more">
+          <a class="pill-btn" href="#about">佐藤医院についてもっと知る <span class="arrow">＞</span></a>
+        </div>
+      </section>
+
+      <!-- Staff -->
+      <section id="staff" class="staff">
+        <div class="section-title">スタッフ紹介</div>
+
+        <div class="staff-wrap">
+          <p class="staff-lead">
+            地域の皆様に安心してご来院いただけるよう、私たちスタッフ一同、誠心誠意対応いたします。それぞれの専門性と温かさを活かし、皆様の健康を支えるパートナーとしてお力になれるよう努めてまいります。
+          </p>
+
+          <div class="staff-grid">
+
+            <!-- 院長 -->
+            <article class="staff-card" aria-label="院長">
+              <div class="staff-photo"></div>
+              <div class="staff-body">
+                <div class="tag">院長</div>
+                <div class="staff-name">佐藤 太郎</div>
+
+                <div class="tag">経歴</div>
+                <div class="staff-text">
+光明大学医学部卒業後、瑞穂中央総合病院で内科医として10 年間勤務。その後、地域医療への貢献を目指し、佐藤内科医院を開院。
+                </div>
+
+                <div class="tag">専門分野</div>
+                <div class="staff-text">生活習慣病、呼吸器疾患、内科全般</div>
+
+                <div class="tag">メッセージ</div>
+                <div class="staff-text">
+患者様にとって気軽に相談できる「かかりつけ医」を目指しています。どんな小さな不安でも、まずはご相談ください。
+                </div>
+              </div>
+              <div class="staff-label" style="left:67px; top:195px;">院長：佐藤太郎.jpg</div>
+            </article>
+
+            <!-- 看護師長 -->
+            <article class="staff-card" aria-label="看護師長">
+              <div class="staff-photo"></div>
+              <div class="staff-body" style="width:276px;">
+                <div class="tag">看護師長</div>
+                <div class="staff-name">鈴木 真理</div>
+
+                <div class="tag">経歴</div>
+                <div class="staff-text" style="width:276px; max-width:276px;">
+白桜大学看護学部卒業後、緑が丘大学病院で10 年勤務。地域医療に携わりたい思いから、佐藤内科医院に入職。
+                </div>
+
+                <div class="tag">得意分野</div>
+                <div class="staff-text" style="width:233px; max-width:233px;">
+親身な対応、注射・採血技術、健康管理指導
+                </div>
+
+                <div class="tag">メッセージ</div>
+                <div class="staff-text" style="height:55px;">
+安心して治療を受けていただけるよう、いつも笑顔でお待ちしています。些細なことでもお気軽にご相談ください。
+                </div>
+              </div>
+              <div class="staff-label" style="left:48px; top:196px;">看護師長：鈴木 真理.jpg</div>
+            </article>
+
+            <!-- 臨床検査技師 -->
+            <article class="staff-card" aria-label="臨床検査技師">
+              <div class="staff-photo"></div>
+              <div class="staff-body" style="width:118px;">
+                <div class="tag">臨床検査技師</div>
+                <div class="staff-name">高橋 由美</div>
+
+                <div class="tag">経歴</div>
+                <div class="staff-text" style="width:274px; max-width:274px;">
+東都臨床検査技術専門学校を卒業後、武蔵中央医療センターにて15 年間の臨床検査技師としての経験を積む。
+                </div>
+
+                <div class="tag">得意分野</div>
+                <div class="staff-text" style="width:282px; max-width:282px;">
+血液検査、心電図検査、超音波検査
+                </div>
+
+                <div class="tag">メッセージ</div>
+                <div class="staff-text" style="width:274px; max-width:274px; height:66px;">
+検査は不安が伴うこともありますが、できるだけリラックスしていただけるよう、優しく丁寧な対応を心がけています。
+                </div>
+              </div>
+              <div class="staff-label" style="left:auto; right:20px; top:50%; transform:translateY(-50%);">
+                臨床検査技師：高橋 由美.jpg
+              </div>
+            </article>
+
+            <!-- 医療事務 -->
+            <article class="staff-card" aria-label="医療事務">
+              <div class="staff-photo" style="height:348px;"></div>
+              <div class="staff-body" style="width:255px;">
+                <div class="tag">医療事務</div>
+                <div class="staff-name">山本 花</div>
+
+                <div class="tag">経歴</div>
+                <div class="staff-text" style="width:274px; max-width:274px;">
+希望医療カレッジ卒業後、さくら診療所にて受付業務を担当。現在は佐藤内科医院で患者様対応を担当。
+                </div>
+
+                <div class="tag">得意分野</div>
+                <div class="staff-text" style="width:274px; max-width:274px;">
+受付業務、カルテ管理、医療費計算
+                </div>
+
+                <div class="tag">メッセージ</div>
+                <div class="staff-text" style="width:274px; max-width:274px; height:75px;">
+皆様に気持ちよくご利用いただけるよう、笑顔と真心を大切にしております。初めての方もどうぞ安心してお越しください。
+                </div>
+              </div>
+              <div class="staff-label" style="left:56px; top:208px;">医療事務：山本 花.jpg</div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Access -->
+      <section id="access" class="access">
+        <div class="section-title">アクセス</div>
+
+        <div class="access-wrap">
+          <div class="map" aria-label="地図（プレースホルダー）"></div>
+
+          <div class="access-info">
+            <div class="access-name">佐藤医院</div>
+
+            <div class="info-block">
+              <div class="label">所在地</div>
+              <div class="dot"></div>
+              <div class="value">〒123-4567
+東京都台東区上野0丁目 0 - 0</div>
+            </div>
+
+            <div class="info-block">
+              <div class="label">アクセス</div>
+              <div class="dot"></div>
+              <div class="value">最寄駅 : JR上野より徒歩5分
+当院専用の無料駐車場10台分あり</div>
+            </div>
+
+            <div class="access-note">
+ご来院の際は、交通状況にご注意ください。
+最寄駅から徒歩5分の距離にあり、便利な立地です。
+            </div>
+
+            <div class="info-block">
+              <div class="label">お問い合わせ</div>
+              <div class="dot"></div>
+              <div class="value">電話番号 : 00-0000-0000
+ファックス : 00-0000-0000
+Eメール : info@sato-clinic-test.jp</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-logo">Logo.png</div>
+
+        <div class="footer-links" aria-label="診療科目">
+          <div>内科</div>
+          <div>循環器科</div>
+          <div>呼吸器科</div>
+          <div>予防医療・健康診断</div>
+          <div>生活習慣病（高血圧、糖尿病等）治療・管理</div>
+        </div>
+
+        <a class="footer-faq" href="#faq">よくあるご質問はこちら ＞</a>
+
+        <div class="footer-help">
+その他、ご不明点があればお電話または
+メールでお問い合わせください。
+        </div>
+
+        <div class="footer-hours">
+受付時間：午前 9 時～12時 / 午後 14～19時
+休診日：木曜・土曜午後・日曜
+※祝祭日も診察を行っておりますが、休診日もございますので、事前にご確認ください。
+        </div>
+
+        <div class="copyright">©Sato Clinic All Reserved 2026</div>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
