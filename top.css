@@ -82,14 +82,15 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1px 15px;
+  height: 27px;
+  padding: 0 15px;
   border-radius: 10px;
   background: var(--tag);
   color: #fff;
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: 1.95px;
-  line-height: 25px;
+  letter-spacing: 0.15em;
+  line-height: 27px;
   white-space: nowrap;
 }
 
