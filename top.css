@@ -12,7 +12,7 @@
   --tag: #666464;
 
   --muted: rgba(0, 0, 0, .2);
-  --line: rgba(0, 0, 0, .97);
+  --line: rgba(252, 248, 248, 0.97);
 }
 
 * {
@@ -30,7 +30,7 @@ body {
 .page {
   width: 1440px;
   margin: 0 auto;
-  outline: 1px solid var(--text);
+  outline: 0px solid var(--text);
   background: #fff;
   overflow: hidden;
 }
@@ -168,7 +168,7 @@ main {
   position: relative;
   height: 728px;
   background: var(--gray-500);
-  border: 1px solid #161515;
+  border: 0px solid #161515;
 }
 
 .hero-bg {
@@ -716,8 +716,8 @@ main {
   background: #f5f1df;
   border-radius: 14px;
   display: flex;
-  gap: 18px;
-  padding: 18px;
+  gap: 24px;
+  padding: 24px;
   position: relative;
   align-items: center;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
@@ -737,6 +737,7 @@ main {
   flex-direction: column;
   gap: 8px;
   min-width: 0;
+  gap: 5px;
 }
 
 .staff-name {
@@ -745,6 +746,7 @@ main {
   letter-spacing: 1.6px;
   line-height: 22px;
   color: #1B2634;
+  margin-bottom: 4px;
 }
 
 .staff-text {
