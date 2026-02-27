@@ -82,6 +82,7 @@ body {
 .tag {
   display: inline-flex;
   align-items: center;
+  align-self: flex-start;
   justify-content: center;
   height: 27px;
   padding: 0 15px;
@@ -320,12 +321,12 @@ main {
   background: #fff;
 }
 
-.week-grid > * {
+.week-grid>* {
   border-top: 1px solid #cfd6df;
   min-height: 72px;
 }
 
-.week-grid > :nth-child(-n+8) {
+.week-grid> :nth-child(-n+8) {
   border-top: 0;
 }
 
@@ -845,7 +846,7 @@ main {
   display: inline-block;
 }
 
-.info-block > .dot + .label {
+.info-block>.dot+.label {
   margin-left: 8px;
 }
 
