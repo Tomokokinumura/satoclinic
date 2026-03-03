@@ -327,8 +327,7 @@ main {
 }
 
 .schedule-wrap {
-  max-width: 1089px;
-  width: 100%;
+  overflow-x: auto;
   padding: 0 20px;
   margin: 0 auto;
   position: relative;
@@ -353,6 +352,7 @@ main {
 }
 
 .week-grid {
+  min-width: 700px;
   margin-top: 0;
   display: grid;
   grid-template-columns: 160px repeat(7, 1fr);
@@ -1066,9 +1066,9 @@ body {
   max-width: 100%;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1180px) {
   .header-inner {
-    padding: 16px 24px;
+    d padding: 16px 24px;
     gap: 24px;
   }
 
