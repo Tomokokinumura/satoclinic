@@ -66,6 +66,47 @@ body {
   white-space: nowrap;
 }
 
+/* 丸 */
+.pill-btn .arrow {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  position: relative;
+  display: inline-block;
+}
+
+/* 矢印 */
+.pill-btn .arrow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-top: 2px solid #146D3C;
+  border-right: 2px solid #146D3C;
+  transform: translate(-60%, -50%) rotate(45deg);
+}
+
+
+
+
+
+/*
+.pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 15px;
+  border-radius: 30px;
+  background: #146D3C;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
 .pill-btn .arrow {
   width: 16px;
   height: 16px;
@@ -78,7 +119,7 @@ body {
   font-weight: 700;
   line-height: 1;
 }
-
+*/
 .tag {
   display: inline-flex;
   align-items: center;
@@ -461,7 +502,7 @@ main {
   height: 6px;
   border-top: 2px solid #fff;
   border-right: 2px solid #fff;
-  transform: translate(-50%, -50%) rotate(45deg);
+  transform: translate(-60%, -50%) rotate(45deg);
 }
 
 
