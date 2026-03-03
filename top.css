@@ -28,11 +28,10 @@ body {
 
 /* fixed canvas (wireframe) */
 .page {
-  width: 1440px;
+  width: 100%;
+  max-width: 1440px;
   margin: 0 auto;
-  outline: 0px solid var(--text);
-  background: #fff;
-  overflow: hidden;
+
 }
 
 /* common */
@@ -246,7 +245,8 @@ main {
 
 .hero-copy p {
   margin: 0;
-  width: 566px;
+  width: auto;
+  max-width: 100%;
   text-align: center;
   font-size: 24px;
   font-weight: 500;
@@ -257,7 +257,7 @@ main {
 }
 
 .hero-image-label {
-  position: absolute;
+  position: static;
   left: 919px;
   top: 390px;
   font-size: 24px;
@@ -327,7 +327,9 @@ main {
 }
 
 .schedule-wrap {
-  width: 1089px;
+  max-width: 1089px;
+  width: 100%;
+  padding: 0 20px;
   margin: 0 auto;
   position: relative;
   display: grid;
@@ -1065,19 +1067,9 @@ body {
 }
 
 @media (max-width: 1200px) {
-  header {
-    position: sticky;
-  }
-
-  main {
-    padding-top: 0;
-  }
-
   .header-inner {
-    height: auto;
     padding: 16px 24px;
     gap: 24px;
-    align-items: flex-start;
   }
 
   .logo {
@@ -1154,7 +1146,7 @@ body {
     margin-top: 48px;
   }
 
-  .about-gallery > div {
+  .about-gallery>div {
     width: 100%;
   }
 
@@ -1222,8 +1214,14 @@ body {
 }
 
 @media (max-width: 767px) {
+  main {
+    padding-top: 72px;
+  }
+
   .header-inner {
+    height: auto;
     padding: 10px 12px;
+    align-items: flex-start;
     gap: 10px;
   }
 
@@ -1384,4 +1382,3 @@ body {
   .footer-links {
     width: auto;
   }
-}
