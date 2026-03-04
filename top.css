@@ -947,6 +947,11 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
+}
+
+.info-head .dot {
+  margin: 0;
 }
 
 .info-block .dot,
