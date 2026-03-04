@@ -796,14 +796,15 @@ main {
 }
 
 .staff-card {
-  height: 400px;
+  min-height: 400px;
+  height: auto;
   background: #f5f1df;
   border-radius: 14px;
   display: flex;
   gap: 24px;
   padding: 24px;
   position: relative;
-  align-items: center;
+  align-items: flex-start;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
 
@@ -821,7 +822,9 @@ main {
   flex-direction: column;
   gap: 8px;
   min-width: 0;
-  gap: 5px;
+  flex: 1 1 auto;
+  width: auto !important;
+  max-width: 100%;
 }
 
 .staff-name {
@@ -830,7 +833,7 @@ main {
   letter-spacing: 1.6px;
   line-height: 22px;
   color: #1B2634;
-  margin-bottom: 4px;
+  margin: 0;
 }
 
 .staff-text {
@@ -840,8 +843,10 @@ main {
   line-height: 20px;
   text-align: left;
   white-space: pre-line;
-  width: 286px;
-  max-width: 286px;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0;
+  overflow-wrap: anywhere;
   color: #1B2634;
 }
 
@@ -853,6 +858,17 @@ main {
   letter-spacing: 1.2px;
   line-height: 22px;
   padding: 2px 12px;
+}
+
+.staff-body > .tag,
+.staff-body > .staff-name,
+.staff-body > .staff-text {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.staff-body > .tag + .staff-text {
+  margin-top: -1px;
 }
 
 .staff-label {
@@ -925,6 +941,12 @@ main {
 .info-block {
   display: flex;
   flex-direction: column;
+}
+
+.info-head {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .info-block .dot,
@@ -1177,6 +1199,7 @@ body {
     width: 100%;
     height: clamp(260px, 42vw, 520px);
     object-fit: cover;
+    border-radius: 10px;
   }
 
   .director-text {
@@ -1443,8 +1466,10 @@ body {
 
   .staff-photo {
     width: 100%;
-    height: auto;
-    max-height: 320px;
+    height: 320px;
+    max-height: none;
+    object-fit: cover;
+    object-position: center 25%;
   }
 
   .footer-links {
