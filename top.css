@@ -919,7 +919,7 @@ main {
   font-size: 24px;
   font-weight: 600;
   letter-spacing: 3.6px;
-  color: #1B2634;
+  color: #146D3C;
 }
 
 .info-block .label {
@@ -927,13 +927,13 @@ main {
   font-weight: 600;
   letter-spacing: 3px;
   line-height: 26.12px;
-  color: #1B2634;
+  color: #146D3C;
 }
 
 .dot {
   width: 8.36px;
   height: 8.36px;
-  background: #000;
+  background: #146D3C;
   border-radius: 9999px;
   margin: 4px 0 6px;
 }
